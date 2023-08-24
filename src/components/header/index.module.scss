@@ -1,0 +1,39 @@
+.header {
+  padding: 40px 0;
+  .container {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto;
+    grid-column-gap: 25px;
+    align-items: center;
+    .selector {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      column-gap: 7.5px;
+      span {
+        color: #fff;
+      }
+      .language {
+        color: #fff;
+        text-decoration: none;
+        opacity: 0.6;
+        transition: opacity 0.3s ease;
+        &:hover,
+        &.active {
+          opacity: 1;
+        }
+      }
+    }
+    .logo {
+      text-align: center;
+      img {
+        width: 80x;
+        height: 31px;
+        object-fit: contain;
+      }
+    }
+    .cart {
+    }
+  }
+}
