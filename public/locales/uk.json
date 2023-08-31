@@ -2,6 +2,10 @@
   "banner": {
     "currency": "₴",
     "size": "Розмір",
-    "more":"Детальніше"
+    "color": "Колір",
+    "more":"Детальніше",
+    "avalible_color": "Доступні кольори",
+    "avalible_size": "Доступні розмір",
+    "material": "Матеріал"
   }
 }

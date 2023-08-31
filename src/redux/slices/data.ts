@@ -22,12 +22,12 @@ type Item = {
 };
 
 
-interface PizzaSliceState {
+interface DataSliceState {
   items: Item[];
   status: 'loading' | 'success' | 'error';
 }
 
-const initialState: PizzaSliceState = {
+const initialState: DataSliceState = {
   items: [],
   status: 'loading',
 };

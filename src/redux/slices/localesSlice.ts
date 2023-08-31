@@ -15,7 +15,11 @@ type Locales = {
   banner: {
     currency: string;
     size: string;
-    more:string
+    more: string;
+    color: string,
+    avalible_color: string;
+    avalible_size: string;
+    material: string;
   };
 };
 
@@ -30,8 +34,12 @@ const initialState: LocalesinitialState = {
     banner: {
       currency: "",
       size: "",
-      more: ""
-    }
+      color: "",
+      more: "",
+      avalible_color: "",
+      avalible_size: "",
+      material: ""
+    },
   },
 };
 

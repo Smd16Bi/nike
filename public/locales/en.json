@@ -2,6 +2,10 @@
   "banner": {
     "currency": "$",
     "size": "Size",
-    "more":"More Details"
+    "color": "Color",
+    "more":"More Details",
+    "avalible_color": "Available colors",
+    "avalible_size": "Available size",
+    "material": "Material"
   }
 }

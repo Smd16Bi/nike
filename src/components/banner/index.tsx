@@ -5,6 +5,7 @@ import { selectData } from "../../redux/slices/data";
 import { selectlocales } from "../../redux/slices/localesSlice";
 import gsap from "gsap";
 import { TextPlugin } from "gsap/all";
+import Modal from "../../ui/modal";
 gsap.registerPlugin(TextPlugin);
 
 const arrImages = [
@@ -79,10 +80,14 @@ const Banner: React.FC = () => {
   const { locales } = useSelector(selectlocales);
   const imgRef = React.useRef(null);
   const bannerRef = React.useRef<HTMLDivElement>(null);
+  const moreRef = React.useRef<HTMLDivElement>(null);
   const textRef = React.useRef<HTMLHeadingElement>(null);
-  const priceRef = React.useRef<HTMLSpanElement>(null);
+  const priceRef = React.useRef<HTMLDivElement>(null);
   const [index, setIndex] = React.useState(0);
   const [anim, setAnim] = React.useState(false);
+  const [visible, setVisible] = React.useState(false);
+  const [size, setSize] = React.useState<number>(0);
+  const [color, setColor] = React.useState<string>("");
 
   const handelerImage = (event: React.ChangeEvent<HTMLInputElement>) => {
     const target = event.target as HTMLInputElement;
@@ -90,17 +95,34 @@ const Banner: React.FC = () => {
     setIndex(currentValue);
   };
 
+  const handlerVisible = (): void => {
+    setVisible(!visible);
+  };
+  const handlerSize = (event: React.ChangeEvent<HTMLSelectElement>): void => {
+    const target = event.target as HTMLSelectElement;
+    const currentValue = Number(target.value);
+    setSize(currentValue);
+  };
+  const handlerColor = (event: React.MouseEvent<HTMLSpanElement>): void => {
+    const target = event.target as HTMLSpanElement;
+    const currentValue = target.dataset.color;
+      setColor(currentValue ?  currentValue : "");    
+  };
+
+  
   React.useEffect(() => {
     const animationTargetCurrent = textRef.current;
     const scrollTriggerCurrent = bannerRef.current;
     const priceTargetCurrent = priceRef.current;
+    const moreTargetCurrent = moreRef.current;
     if (!anim) {
       setAnim(true);
     }
-    if (priceTargetCurrent && animationTargetCurrent && scrollTriggerCurrent && anim) {
+    if (priceTargetCurrent && moreTargetCurrent && animationTargetCurrent && scrollTriggerCurrent && anim) {
       let ctx = gsap.context(() => {
-        gsap.from(textRef.current, { duration: 2, text: "" });
-        gsap.from(priceTargetCurrent, { y: 50, opacity: 0, delay: 1, direction: 1, });
+        gsap.from(textRef.current, { duration: 0.5, text: "" });
+        gsap.from(priceTargetCurrent, { y: 50, opacity: 0, delay: 0.5, direction: 0.5 });
+        gsap.from(moreTargetCurrent, { y: 50, opacity: 0, delay: 1, direction: 0.5 });
       }, bannerRef);
 
       return () => ctx.revert();
@@ -133,13 +155,13 @@ const Banner: React.FC = () => {
           <h1 ref={textRef} className={`${style.title} text`}>
             {item.name}
           </h1>
-          <div className={style.content}>
-            <span ref={priceRef} className={style.price}>
+          <div ref={priceRef} className={style.content}>
+            <span className={style.price}>
               {locales.banner.currency} {item.price}
             </span>
             <div className={style.size}>
               <span>{locales.banner.size}</span>
-              <select name="" id="">
+              <select onChange={handlerSize} value={size}>
                 {item.size.split(",").map((el) => {
                   return (
                     <option key={el} value={el}>
@@ -148,6 +170,14 @@ const Banner: React.FC = () => {
                   );
                 })}
               </select>
+            </div>
+            <div className={style.color}>
+              <span>{locales.banner.color}</span>
+              <div className={style.avalible_color}>
+                {item.color_name?.split(",").map((el) => {
+                  return <span data-color={el} onClick={handlerColor} key={el} style={{ background: el }}></span>;
+                })}
+              </div>
             </div>
             <div className={style.add}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -158,7 +188,7 @@ const Banner: React.FC = () => {
               </svg>
             </div>
           </div>
-          <div className={style.more}>
+          <div ref={moreRef} className={style.more} onClick={handlerVisible}>
             <span>{locales.banner.more}</span>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
@@ -169,6 +199,7 @@ const Banner: React.FC = () => {
           </div>
         </div>
       </div>
+      <Modal isVisible={visible} setVisible={setVisible} {...item} />
     </div>
   );
 };
