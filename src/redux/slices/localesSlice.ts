@@ -16,10 +16,17 @@ type Locales = {
     currency: string;
     size: string;
     more: string;
-    color: string,
+    color: string;
     avalible_color: string;
     avalible_size: string;
     material: string;
+  };
+  footer: {
+    copy_right: string;
+  };
+  cart: {
+    cart_empty: string;
+    cart_name: string;
   };
 };
 
@@ -38,8 +45,15 @@ const initialState: LocalesinitialState = {
       more: "",
       avalible_color: "",
       avalible_size: "",
-      material: ""
+      material: "",
     },
+    footer: {
+      copy_right: "",
+    },
+    cart: {
+      cart_empty: "",
+      cart_name: "string"
+    }
   },
 };
 

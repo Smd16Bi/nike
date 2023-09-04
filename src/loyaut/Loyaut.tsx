@@ -1,17 +1,18 @@
 import React from "react";
-import { Banner, Footer, Header } from "../components";
-
-
+import { Banner, Cart, Footer, Header } from "../components";
+import Preloader from "../ui/preloader";
 type Props = {
-   children?:  React.ReactNode;
+  children?: React.ReactNode;
 };
 
 const Loyaut = ({ children }: Props) => {
   return (
     <>
+      <Preloader />
       <Header />
+      <Cart/>
       <main>
-        <Banner/>
+        <Banner />
       </main>
       <Footer />
     </>

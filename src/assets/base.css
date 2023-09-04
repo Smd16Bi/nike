@@ -5,6 +5,17 @@ body {
   font-family: 'Montserrat';
   background-color: #000;
   color: #fff;
+  height: 100%;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+main {
+  flex: 1;
 }
 
 .page-width {
