@@ -1,0 +1,19 @@
+{
+  "banner": {
+    "currency": "₴",
+    "size": "Розмір",
+    "color": "Колір",
+    "more": "Детальніше",
+    "avalible_color": "Доступні кольори",
+    "avalible_size": "Доступні розмір",
+    "material": "Матеріал"
+  },
+  "footer": {
+    "copy_right": "2023 App React, Inc. Всі права захищені"
+  },
+  "cart":  {
+    "cart_empty": "Кошик порожній",
+    "cart_name": "Кошик",
+    "total": "Загальна вартість"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "banner": {
+    "currency": "$",
+    "size": "Size",
+    "color": "Color",
+    "more":"More Details",
+    "avalible_color": "Available colors",
+    "avalible_size": "Available size",
+    "material": "Material"
+  },
+  "footer": {
+    "copy_right": "2023 App React, Inc. All Rights Reserved"
+  },
+  "cart":  {
+    "cart_empty": "Cart is empty",
+    "cart_name": "Cart",
+    "total": "Total"
+  }
+}
