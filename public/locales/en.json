@@ -13,6 +13,7 @@
   },
   "cart":  {
     "cart_empty": "Cart is empty",
-    "cart_name": "Cart"
+    "cart_name": "Cart",
+    "total": "Total"
   }
 }

@@ -27,6 +27,7 @@ type Locales = {
   cart: {
     cart_empty: string;
     cart_name: string;
+    total: string;
   };
 };
 
@@ -52,7 +53,8 @@ const initialState: LocalesinitialState = {
     },
     cart: {
       cart_empty: "",
-      cart_name: "string"
+      cart_name: "",
+      total: ""
     }
   },
 };
